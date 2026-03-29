@@ -29,8 +29,8 @@ interface ParticleCanvasProps {
 const GRID_SIZE = 205;
 
 const LOGO_PRESETS = {
-  linear: "/linear-app-icon.png",
-  cube: "/CUBE_2D_LIGHT.png",
+  // linear: "/linear-app-icon.png",
+  templafy: "/templafy-logo.png",
 } as const;
 
 export default function ParticleCanvas({
@@ -55,14 +55,17 @@ export default function ParticleCanvas({
       options: ["floyd-steinberg", "bayer", "blue-noise"],
       default: "floyd-steinberg",
     },
-    scale: [0.35, 0.1, 2.0, 0.05],
+    scale: [0.2, 0.1, 2.0, 0.05],
     dotScale: [1, 0.5, 10, 0.5],
     invert: true,
 
     logo: {
       type: "select",
-      options: ["linear", "cube"],
-      default: "linear",
+      options: [
+        // "linear",
+        "templafy"
+      ],
+      default: "templafy",
     },
 
     image: {
@@ -96,7 +99,7 @@ export default function ParticleCanvas({
 
   useEffect(() => {
     const key = params.logo as keyof typeof LOGO_PRESETS;
-    const path = LOGO_PRESETS[key] ?? LOGO_PRESETS.linear;
+    const path = LOGO_PRESETS[key] ?? LOGO_PRESETS.templafy;
     onLogoPresetChange(path);
   }, [params.logo, onLogoPresetChange]);
 
